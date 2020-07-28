@@ -4,7 +4,7 @@ const welcome = require("./welcome");
 const client = new Discord.Client();
 
 client.on("guildMemberAdd", (member) => {
-  const username = member.username;
+  const username = member.user.username;
   const message = welcome(username);
   member.send(message);
   //
