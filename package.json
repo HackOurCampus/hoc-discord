@@ -5,7 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^12.2.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "firebase-admin": "^9.0.0"
   },
   "scripts": {
     "start": "node index.js",
