@@ -30,12 +30,15 @@ const getAllData = () => {
     participantRef
       .get()
       .then((querySnapshot) => {
-        resolve(
-          querySnapshot.docs.reduce((acc, doc) => {
-            acc[doc.id] = doc.data();
-            return acc;
-          }, {})
-        );
+        const d = querySnapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        });
+        //console.log(d)
+        //console.log(d.length);
+        resolve(d);
       })
       .catch((err) => {
         console.log(err);
@@ -47,5 +50,7 @@ const getAllData = () => {
       });
   });
 };
+
+//getAllData();
 
 module.exports = { addParticipantData, getAllData };
