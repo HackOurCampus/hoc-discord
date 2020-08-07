@@ -1,4 +1,5 @@
 const db = require("./firebase-config");
+const admin = require("firebase-admin");
 
 const participantRef = db.collection("participants");
 
@@ -10,6 +11,7 @@ const addParticipantData = (discordId, discordUsername, githubId) => {
         {
           discordUsername,
           githubId,
+          timestamp: admin.firestore.FieldValue.serverTimestamp(),
         },
         { merge: true }
       )
@@ -52,5 +54,6 @@ const getAllData = () => {
 };
 
 //getAllData();
+// addParticipantData("test1", "asdf", "dff");
 
 module.exports = { addParticipantData, getAllData };
