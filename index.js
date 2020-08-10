@@ -13,11 +13,12 @@ client.on("message", async (message) => {
   if (message.content === "HOCInfoDebug") {
     //debugging only
     Commands.newMemberHandlerDebugging(message);
-  } else if (
-    message.channel.type === "dm" &&
-    message.content.startsWith("!addgh")
-  ) {
-    await Commands.githubUsernameHandler(message);
+  } else if (message.channel.type === "dm") {
+    if (message.content.startsWith("!addgh")) {
+      await Commands.githubUsernameHandler(message);
+    } else if (message.content.startsWith("!addemail")) {
+      await Commands.emailHandler(message);
+    }
   }
 });
 

@@ -54,10 +54,13 @@ const getAllData = () => {
 };
 
 const addEmail = (id, discordUsername, email) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!email || !re.test(String(email).toLowerCase())) throw new Error("IE");
   participantRef.doc(id).set({ discordUsername, email }, { merge: true });
 };
 
 // getAllData();
 // addParticipantData("test1", "asdf", "dff");
+addEmail("test2", "tesss", "assd@gmail.com");
 
 module.exports = { addParticipantData, getAllData, addEmail };

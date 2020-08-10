@@ -1,5 +1,5 @@
 const welcome = require("./welcome");
-const { addParticipantData } = require("./db-functions");
+const { addParticipantData, addEmail } = require("./db-functions");
 
 const channelNames = ["general", "team-formation", "logistics", "workshops"];
 
@@ -26,6 +26,7 @@ const newMemberHandlerDebugging = (message) => {
   message.reply(welcome(message.author.username, channelIDMap));
 };
 
+// TODO: refactor next 2 functions, lots of code duplication here.
 const githubUsernameHandler = async (message) => {
   const userId = message.author.id;
   const username = message.author.username;
@@ -39,8 +40,29 @@ const githubUsernameHandler = async (message) => {
   message.reply("We've successfully registered your GitHub account!");
 };
 
+const emailHandler = async (message) => {
+  const userId = message.author.id;
+  const username = message.author.username;
+  const email = message.content.split(" ")[1];
+  message.reply("Please wait, adding your email...");
+  try {
+    await addEmail(userId, username, email);
+  } catch (err) {
+    if (err.message === "IE") {
+      return message.reply(
+        "It seems like you've entered an invalid email. Please enter the command like this: `!addemail foo@bar.com`"
+      );
+    }
+    return message.reply(
+      "Oops, something went wrong. Please contact one of the organizers"
+    );
+  }
+  message.reply("We've successfully registered your email account!");
+};
+
 module.exports = {
   newMemberHandler,
   newMemberHandlerDebugging,
   githubUsernameHandler,
+  emailHandler,
 };
