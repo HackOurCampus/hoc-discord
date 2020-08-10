@@ -39,7 +39,7 @@ const getAllData = () => {
           };
         });
         //console.log(d)
-        //console.log(d.length);
+        // console.log(d.length);
         resolve(d);
       })
       .catch((err) => {
@@ -53,7 +53,11 @@ const getAllData = () => {
   });
 };
 
-//getAllData();
+const addEmail = (id, discordUsername, email) => {
+  participantRef.doc(id).set({ discordUsername, email }, { merge: true });
+};
+
+// getAllData();
 // addParticipantData("test1", "asdf", "dff");
 
-module.exports = { addParticipantData, getAllData };
+module.exports = { addParticipantData, getAllData, addEmail };

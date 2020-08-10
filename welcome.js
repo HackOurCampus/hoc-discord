@@ -4,7 +4,7 @@ module.exports = (name, channelIDOBj) => {
     
 - ${channelIDOBj["logistics"]}: Here, we will be coordinating submission dates/times, giving information about speakers/workshops, and answering any questions you might have about how this hackathon is structured! 🕑
 
-- ${channelIDOBj["brainstorming"]}: In the coming weeks, we will coordinate virtual hangouts for all hackers so they can come together and think of dope ideas 💡
+- ${channelIDOBj["team-formation"]}: In the coming weeks, we will coordinate virtual hangouts for all hackers so they can come together and think of dope ideas 💡
 
 - ${channelIDOBj["workshops"]}: We will be periodically updating that channel whenever a workshop is about to start. You can also interact with our speakers for a short while after their workshop has ended 🤓
 
