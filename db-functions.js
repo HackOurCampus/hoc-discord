@@ -61,6 +61,6 @@ const addEmail = (id, discordUsername, email) => {
 
 // getAllData();
 // addParticipantData("test1", "asdf", "dff");
-addEmail("test2", "tesss", "assd@gmail.com");
+// addEmail("test2", "tesss", "assd@gmail.com");
 
 module.exports = { addParticipantData, getAllData, addEmail };
